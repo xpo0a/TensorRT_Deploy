@@ -47,17 +47,21 @@ The origin pytorch url is [RealESRGAN](https://github.com/xinntao/Real-ESRGAN)
 2. ```python calculatePSNR_SSIM.py``` calcuate PSNR and SSIM for the images
 3. ```python pic_Rename.py``` change the image name to 1.png 2.png etc (**you should Rename the image of lr and HR** to calcuate PSNR and SSIM)
 4. ```python plot_*.py``` use matplotlib to get the statistics of inference time and precision
+5. ```python image_size.py``` get the max and min image to set **dynamic shape** of TRT
 ---
 ### Results
 you can find Test system infor in [here](https://github.com/xpo0a/TensorRT_Deploy)
 ### DIV2KRK
-+ 100 images for HR and lr_x4
++ 100 images for HR and lr_x4, the img size min:(204,339) max:(510,510)
 + Comparison of averange exection time and averange SPNR/SSIM of 3 iterations.
 + **about GPU memory**
 
-|                 | pytorch-FP32 | TRT-FP32  | TRT-FP16  |
-| --------------- | ------------ | --------- | --------- |
-| GPU memory(MiB) | 10849        | 4983~5047 | 3443~3507 |
+|                        | pytorch-FP32 | TRT-FP32  | TRT-FP16  | TRT-FP16 vs pytorch-FP32 |
+|------------------------|--------------|-----------|-----------|--------------------------|
+| averange PSNR          | 25.7677      | 25.7677   | 25.7619   | decrease 0.0058          |
+| averange SSIM          | 0.7533       | 0.7533    | 0.7530    | decrease 0.0003          |
+| averange infer time(s) | 1.8458       | 1.0242    | 0.5282    | reduce 71.38%            |
+| GPU memory (MiB)       | 10849        | 4983~5047 | 3443~3507 | reduce about 67.74%      |
 
 + **index 1 ~ 100 image's averange infer time**
 
@@ -90,7 +94,8 @@ you can find Test system infor in [here](https://github.com/xpo0a/TensorRT_Deplo
 | butterfly - 63x63     | 23.9587/0.8462 | 23.9587/0.8462 | 23.9626/0.8459  |
 | head - 69x69          | 28.5682/0.6755 | 28.5682/0.6755 | 28.5599/0.6752  |
 | woman - 84x57         | 26.6251/0.8691 | 26.6251/0.8691 | 26.6080/0.8683  |
-### SR img display
+---
+### TRT-FP16 SR img display
 + from DIV2KRK
 
 ![image](https://github.com/xpo0a/TensorRT_Deploy/blob/main/RealESRGAN_TRT/script/Div2kRK.png)
@@ -101,3 +106,4 @@ you can find Test system infor in [here](https://github.com/xpo0a/TensorRT_Deplo
 + from RealWorld38
 
 ![image](https://github.com/xpo0a/TensorRT_Deploy/blob/main/RealESRGAN_TRT/script/Realword38.png)
+---
