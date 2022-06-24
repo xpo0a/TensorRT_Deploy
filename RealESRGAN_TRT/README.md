@@ -2,7 +2,7 @@
 ---
 The origin pytorch url is [RealESRGAN](https://github.com/xinntao/Real-ESRGAN)
 ---
-## Python Dependencies and Installation
+## TensorRT Python Dependencies and Installation
 + python >= 3.7
 + Pytorch 1.8.1+cu111
 + numpy 1.22.4
@@ -23,7 +23,7 @@ The origin pytorch url is [RealESRGAN](https://github.com/xinntao/Real-ESRGAN)
 提取码：1234)
 ---
 ## Quick Inference on TensorRT
-1. git clone git@github.com:xpo0a/TensorRT_Deploy.git
+1. ```git clone git@github.com:xpo0a/TensorRT_Deploy.git```
 2. generate ONNX file
 ```python Pth_2_Onnx.py```
 3. generate TensorRT engine
@@ -48,3 +48,20 @@ The origin pytorch url is [RealESRGAN](https://github.com/xinntao/Real-ESRGAN)
 3. ```python pic_Rename.py``` change the image name to 1.png 2.png etc (**you should Rename the image of lr and HR** to calcuate PSNR and SSIM)
 4. ```python plot_*.py``` use matplotlib to get the statistics of inference time and precision
 ---
+### Results
+you can find Test system infor in [here](https://github.com/xpo0a/TensorRT_Deploy)
+### Set5
++ 5 images for HR and lr_x4
++ Comparison of calculation exection time and SPNR/SSIM of 100 iterations
++ **infer time**
+| img name-resulotion |         Time(s)         | pytorch-FP32 | TRT-FP32 | TRT-FP16 |
+| ------------------- | ----------------------- | ------------ | -------- | -------- |
+|                     | TRT engine loading time | 0            | 2.9133   | 2.1686   |
+| baby - 126x126      | infer time              | 0.0415       | 0.0435   | 0.0181   |
+| bird - 72x72        | infer time              | 0.0279       | 0.0194   | 0.0116   |
+| butterfly - 63x63   | infer time              | 0.028        | 0.0266   | 0.0092   |
+| head - 69x69        | infer time              | 0.0278       | 0.0342   | 0.0247   |
+| woman - 84x57       | infer time              | 0.0276       | 0.0239   | 0.0091   |
+|                     | averange time           | 0.03334      | 0.51015  | 0.37355  |
++ **PSNR/SSIM**
++ 
