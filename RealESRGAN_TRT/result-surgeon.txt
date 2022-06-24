@@ -1,0 +1,32 @@
+[I] Loading model: /tmp/tmp_polygraphy_5e2d5997b04f3753ad69e98aabb2473452b93253531c906b.onnx
+[I] Original Model:
+    Name: torch-jit-export | ONNX Opset: 12
+    
+    ---- 1 Graph Input(s) ----
+    {in [dtype=float32, shape=(1, 3, 'width', 'height')]}
+    
+    ---- 1 Graph Output(s) ----
+    {out [dtype=float32, shape=(1, 3, 'width', 'height')]}
+    
+    ---- 704 Initializer(s) ----
+    
+    ---- 1187 Node(s) ----
+    
+[I] Folding Constants | Pass 1
+[I]     Total Nodes | Original:  1187, After Folding:  1093 |    94 Nodes Folded
+[I] Folding Constants | Pass 2
+[I]     Total Nodes | Original:  1093, After Folding:  1093 |     0 Nodes Folded
+[I] Saving ONNX model to: model-foldConstant.onnx
+[I] New Model:
+    Name: torch-jit-export | ONNX Opset: 12
+    
+    ---- 1 Graph Input(s) ----
+    {in [dtype=float32, shape=(1, 3, 'width', 'height')]}
+    
+    ---- 1 Graph Output(s) ----
+    {out [dtype=float32, shape=(1, 3, 'width', 'height')]}
+    
+    ---- 798 Initializer(s) ----
+    
+    ---- 1093 Node(s) ----
+    
