@@ -2,6 +2,8 @@
 ---
 The origin pytorch url is [RealESRGAN](https://github.com/xinntao/Real-ESRGAN)
 ---
+adsfgasdf
+---
 ## Downloads
 + Dataset
   + Set5 -> (HR and LR img) 5 images , [aliyundriver](https://www.aliyundrive.com/s/zi16oqJjuJU)
@@ -22,7 +24,7 @@ The origin pytorch url is [RealESRGAN](https://github.com/xinntao/Real-ESRGAN)
 ```python inference_realesrgan.py``` to get SR images.
 ---
 ### python script
-1. inference_realesrgan.py
+1. ```python inference_realesrgan.py``` to get SR images in folder Results
 ```Usage: python inference_realesrgan.py -n RealESRGAN_x4plus -i infile -o outfile [options]...
   -i --input           Input image or folder. Default: inputs
   -o --output          Output folder. Default: results
@@ -37,3 +39,4 @@ The origin pytorch url is [RealESRGAN](https://github.com/xinntao/Real-ESRGAN)
 2. ```python calculatePSNR_SSIM.py``` calcuate PSNR and SSIM for the images
 3. ```python pic_Rename.py``` change the image name to 1.png 2.png etc (**you should Rename the image of lr and HR** to calcuate PSNR and SSIM)
 4. ```python plot_*.py``` use matplotlib to get the statistics of inference time and precision
+---
