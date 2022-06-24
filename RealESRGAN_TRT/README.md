@@ -9,7 +9,7 @@ The origin pytorch url is [RealESRGAN](https://github.com/xinntao/Real-ESRGAN)
 
 + Model
   + [Origin model](https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth)
-  + [I trained and Test model](链接：https://pan.baidu.com/s/1mlacQ0iXbaLaG5yb5f7hTg 
+  + [finetuned and then test model](链接：https://pan.baidu.com/s/1mlacQ0iXbaLaG5yb5f7hTg 
 提取码：1234)
 + 
 
