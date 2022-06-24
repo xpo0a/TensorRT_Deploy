@@ -2,7 +2,15 @@
 ---
 The origin pytorch url is [RealESRGAN](https://github.com/xinntao/Real-ESRGAN)
 ---
-adsfgasdf
+## Python Dependencies and Installation
++ python >= 3.7
++ Pytorch 1.8.1+cu111
++ numpy 1.22.4
++ cuda-python 11.7.0
++ basicsr 1.3.5
++ onnx 1.11.0
++ torch-tensorrt 0.0.0
++ py-opencv 4.5.2
 ---
 ## Downloads
 + Dataset
