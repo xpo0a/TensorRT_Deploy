@@ -90,3 +90,14 @@ you can find Test system infor in [here](https://github.com/xpo0a/TensorRT_Deplo
 | butterfly - 63x63     | 23.9587/0.8462 | 23.9587/0.8462 | 23.9626/0.8459  |
 | head - 69x69          | 28.5682/0.6755 | 28.5682/0.6755 | 28.5599/0.6752  |
 | woman - 84x57         | 26.6251/0.8691 | 26.6251/0.8691 | 26.6080/0.8683  |
+### SR img display
++ from DIV2KRK
+
+![image](https://github.com/xpo0a/TensorRT_Deploy/blob/main/RealESRGAN_TRT/script/Div2kRK.png)
++ from Set5
+
+![image](https://github.com/xpo0a/TensorRT_Deploy/blob/main/RealESRGAN_TRT/script/Set5.png)
+
++ from RealWorld38
+
+![image](https://github.com/xpo0a/TensorRT_Deploy/blob/main/RealESRGAN_TRT/script/Realword38.png)
