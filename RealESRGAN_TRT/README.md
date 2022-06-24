@@ -50,6 +50,17 @@ The origin pytorch url is [RealESRGAN](https://github.com/xinntao/Real-ESRGAN)
 ---
 ### Results
 you can find Test system infor in [here](https://github.com/xpo0a/TensorRT_Deploy)
+### DIV2KRK
++ 100 images for HR and lr_x4
++ Comparison of averange exection time and averange SPNR/SSIM of 3 iterations.
++ **about GPU memory**
+
+|                 | pytorch-FP32 | TRT-FP32  | TRT-FP16  |
+| --------------- | ------------ | --------- | --------- |
+| GPU memory(MiB) | 10849        | 4983~5047 | 3443~3507 |
+
++ **every image's averange infer time**
+![image](https://github.com/xpo0a/TensorRT_Deploy/blob/main/RealESRGAN_TRT/script/inferTime.png)
 ### Set5
 + 5 images for HR and lr_x4
 + Comparison of calculation exection time and SPNR/SSIM of 100 iterations
