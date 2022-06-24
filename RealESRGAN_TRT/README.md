@@ -37,12 +37,7 @@ The origin pytorch url is [RealESRGAN](https://github.com/xinntao/Real-ESRGAN)
   -i --input           Input image or folder. Default: inputs
   -o --output          Output folder. Default: results
   -n --model_name      Model name. Default: RealESRGAN_x4plus
-  -s, --outscale       The final upsampling scale of the image. Default: 4
   --suffix             Suffix of the restored image. Default: None
-  -t, --tile           Tile size, 0 for no tile during testing. Default: 0
-  --face_enhance       Whether to use GFPGAN to enhance face. Default: False
-  --fp32               Use fp32 precision during inference. Default: fp16 (half precision).
-  --ext                Image extension. Options: auto | jpg | png, auto means using the same extension as inputs. Default: auto
   ```
 2. ```python calculatePSNR_SSIM.py``` calcuate PSNR and SSIM for the images
 3. ```python pic_Rename.py``` change the image name to 1.png 2.png etc (**you should Rename the image of lr and HR** to calcuate PSNR and SSIM)
