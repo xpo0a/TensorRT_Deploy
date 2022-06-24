@@ -54,7 +54,8 @@ you can find Test system infor in [here](https://github.com/xpo0a/TensorRT_Deplo
 + 5 images for HR and lr_x4
 + Comparison of calculation exection time and SPNR/SSIM of 100 iterations
 + **infer time**
-| img name-resulotion |         Time(s)         | pytorch-FP32 | TRT-FP32 | TRT-FP16 |
+
+| img name - resulotion |         Time(s)         | pytorch-FP32 | TRT-FP32 | TRT-FP16 |
 | ------------------- | ----------------------- | ------------ | -------- | -------- |
 |                     | TRT engine loading time | 0            | 2.9133   | 2.1686   |
 | baby - 126x126      | infer time              | 0.0415       | 0.0435   | 0.0181   |
@@ -64,4 +65,12 @@ you can find Test system infor in [here](https://github.com/xpo0a/TensorRT_Deplo
 | woman - 84x57       | infer time              | 0.0276       | 0.0239   | 0.0091   |
 |                     | averange time           | 0.03334      | 0.51015  | 0.37355  |
 + **PSNR/SSIM**
-+ 
+
+| img name - resulotion | pytorch-FP32   | TRT-FP32       | TRT-FP16        |
+|-----------------------|----------------|----------------|-----------------|
+|                       | PSNR/SSIM      | PSNR/SSIM      | PSNR/SSIM       |
+| baby - 126x126        | 27.3842/0.7618 | 27.3842/0.7618 | 27.4082/0.7621  |
+| bird - 72x72          | 29.5901/0.8630 | 29.5901/0.8630 | 29.5834/0.8626  |
+| butterfly - 63x63     | 23.9587/0.8462 | 23.9587/0.8462 | 23.9626/0.8459  |
+| head - 69x69          | 28.5682/0.6755 | 28.5682/0.6755 | 28.5599/0.6752  |
+| woman - 84x57         | 26.6251/0.8691 | 26.6251/0.8691 | 26.6080/0.8683  |
