@@ -10,3 +10,4 @@ TRT's likely the fastest way to run a Deep learning model on NVIDIA GPUs.  ^ . ^
 + TensorRT 8.2.5.1 for RealESRGAN
 + torch 1.8.1+cu111
 ---
+## Updates
