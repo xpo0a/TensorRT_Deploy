@@ -40,6 +40,7 @@ class RealESRGANerTest():
         self.half = half
         self.int = 0
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu') if device is None else device
+        self._output_names = None
         trtFile = './model-FP16.trt'
 
         logger = trt.Logger(trt.Logger.INFO)
@@ -47,34 +48,87 @@ class RealESRGANerTest():
             self.engine = trt.Runtime(logger).deserialize_cuda_engine(f.read())
         self.context = self.engine.create_execution_context()
 
-    def trtInfer(self, img):
-        batch, channel, height, width = self.img.shape
+        self.__load_io_names()
+
+    def torch_dtype_from_trt(self, dtype: trt.DataType) -> torch.dtype:
+        """Convert pytorch dtype to TensorRT dtype.
+        Args:
+            dtype (str.DataType): The data type in tensorrt.
+        Returns:
+            torch.dtype: The corresponding data type in torch.
+        """
+
+        if dtype == trt.bool:
+            return torch.bool
+        elif dtype == trt.int8:
+            return torch.int8
+        elif dtype == trt.int32:
+            return torch.int32
+        elif dtype == trt.float16:
+            return torch.float16
+        elif dtype == trt.float32:
+            return torch.float32
+        else:
+            raise TypeError(f'{dtype} is not supported by torch')
+
+    def __load_io_names(self):
+        """Load input/output names from engine."""
+        names = [_ for _ in self.engine]
+        input_names = list(filter(self.engine.binding_is_input, names))
+        self._input_names = input_names
+
+        if self._output_names is None:
+            output_names = list(set(names) - set(input_names))
+            self._output_names = output_names
+
+    def torch_device_from_trt(device: trt.TensorLocation):
+        """Convert pytorch device to TensorRT device.
+        Args:
+            device (trt.TensorLocation): The device in tensorrt.
+        Returns:
+            torch.device: The corresponding device in torch.
+        """
+        if device == trt.TensorLocation.DEVICE:
+            return torch.device('cuda')
+        elif device == trt.TensorLocation.HOST:
+            return torch.device('cpu')
+        else:
+            return TypeError(f'{device} is not supported by torch')
+
+    # save CPU memory
+    def trtInfer_111(self, img):
         print(img.shape)
-        self.context.set_binding_shape(0, [batch, channel, height, width])  # 能动态 绑定大小吗？ 应该可以，此处书拿出 图像的 大小即可
-        _, stream = cudart.cudaStreamCreate()
-        img = img.cpu()
-        inputH0 = np.ascontiguousarray(img.numpy())
-        outputH0 = np.empty(self.context.get_binding_shape(1), dtype=trt.nptype(self.engine.get_binding_dtype(1)))
-        _, inputD0 = cudart.cudaMallocAsync(inputH0.nbytes, stream)  # inputH0.nbytes
-        _, outputD0 = cudart.cudaMallocAsync(outputH0.nbytes, stream)
+        assert self._input_names is not None
+        assert self._output_names is not None
+        bindings = [None] * (len(self._input_names) + len(self._output_names))
 
-        cudart.cudaMemcpyAsync(inputD0, inputH0.ctypes.data, inputH0.nbytes,
-                               cudart.cudaMemcpyKind.cudaMemcpyHostToDevice,
-                               stream)  # inputH0.nbytes
-        self.context.execute_async_v2([int(inputD0), int(outputD0)], stream)
-        cudart.cudaMemcpyAsync(outputH0.ctypes.data, outputD0, outputH0.nbytes,
-                               cudart.cudaMemcpyKind.cudaMemcpyDeviceToHost, stream)
-        cudart.cudaStreamSynchronize(stream)
+        input_name = 'in'
+        # check if input shape is valid
+        profile = self.engine.get_profile_shape(0, input_name)
 
-        cudart.cudaStreamDestroy(stream)
-        cudart.cudaFree(inputD0)
-        cudart.cudaFree(outputD0)
-        print("Succeeded running model in TensorRT!")
+        idx = self.engine.get_binding_index(input_name)
 
-        outputH0 = torch.from_numpy(outputH0)
-        output = outputH0
+        if img.dtype == torch.long:
+            img = img.int()
+        self.context.set_binding_shape(idx, tuple(img.shape))
+        bindings[idx] = img.contiguous().data_ptr()
+
+        # create output tensors
+        outputs = {}
+        for output_name in self._output_names:
+            idx = self.engine.get_binding_index(output_name)
+            dtype = self.torch_dtype_from_trt(self.engine.get_binding_dtype(idx))
+            shape = tuple(self.context.get_binding_shape(idx))
+
+            device = 'cuda'
+            output = torch.empty(size=shape, dtype=dtype, device=device)
+            outputs[output_name] = output
+            bindings[idx] = output.data_ptr()  # get the address of output
+        print(bindings)
+        self.context.execute_async_v2(bindings,
+                                      torch.cuda.current_stream().cuda_stream)
+
         return output
-
 
     def pre_process(self, img):
         """Pre-process, such as pre-pad and mod pad, so that the images can be divisible
