@@ -30,6 +30,8 @@ The origin pytorch url is [RealESRGAN](https://github.com/xinntao/Real-ESRGAN)
 ```sh plan.sh```
 4. change the image path and run
 ```python inference_realesrgan.py``` to get SR images.
+5. build trt-int8 engine
+```cd int8_v2``` change the related path then run ``` python int8_Engine_v2.py ```
 ---
 ### python script
 1. ```python inference_realesrgan.py``` to get SR images in folder Results
