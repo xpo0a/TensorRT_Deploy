@@ -51,7 +51,7 @@ you can find Test system infor in [here](https://github.com/xpo0a/TensorRT_Deplo
 ### DIV2KRK
 + 100 images for HR and lr_x4, the img size min:(204,339) max:(510,510)
 + Comparison of averange exection time and averange SPNR/SSIM of 3 iterations.
-+ **about GPU memory**
+**about GPU memory**
 
 |                        | pytorch-FP32 | TRT-FP32  | TRT-FP16  | TRT-int8  | TRT-FP16 vs pytorch-FP32 | TRT-int8 vs pytorch-FP32 |
 | ---------------------- | ------------ | --------- | --------- | --------- | ------------------------ | ------------------------ |
@@ -61,8 +61,8 @@ you can find Test system infor in [here](https://github.com/xpo0a/TensorRT_Deplo
 | GPU memory (MiB)       | 10849        | 4983~5047 | 3443~3507 | 3411~3487 | reduce about 67.74%      | reduce about 67.96%      |
 
 
-+ **index 1 ~ 100 image's averange infer time **
-+ 
+**index 1 ~ 100 image's averange infer time **
+
 ![image](https://github.com/xpo0a/TensorRT_Deploy/blob/main/RealESRGAN_TRT/script/inferTime_all.png)
 
 ![image](https://github.com/xpo0a/TensorRT_Deploy/blob/main/RealESRGAN_TRT/script/inferTime_one.png)
