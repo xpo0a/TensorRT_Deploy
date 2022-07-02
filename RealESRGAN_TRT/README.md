@@ -53,12 +53,12 @@ you can find Test system infor in [here](https://github.com/xpo0a/TensorRT_Deplo
 + Comparison of averange exection time and averange SPNR/SSIM of 3 iterations.
 + **about GPU memory**
 
-|                        | pytorch-FP32 | TRT-FP32  | TRT-FP16  | TRT-int8  | TRT-FP16 vs pytorch-FP32 |
-| ---------------------- | ------------ | --------- | --------- | --------- | ------------------------ |
-| averange PSNR          | 25.7677      | 25.7677   | 25.7619   | 25.1779   | decrease 0.0058          |
-| averange SSIM          | 0.7533       | 0.7533    | 0.7530    | 0.7122    | decrease 0.0003          |
-| averange infer time(s) | 1.8458       | 1.0242    | 0.5282    | 0.3598    | reduce 71.38%            |
-| GPU memory (MiB)       | 10849        | 4983~5047 | 3443~3507 | 3411~3487 | reduce about 67.74%      |
+|                        | pytorch-FP32 | TRT-FP32  | TRT-FP16  | TRT-int8  | TRT-FP16 vs pytorch-FP32 | TRT-int8 vs pytorch-FP32 |
+| ---------------------- | ------------ | --------- | --------- | --------- | ------------------------ | ------------------------ |
+| averange PSNR          | 25.7677      | 25.7677   | 25.7619   | 25.1779   | decrease 0.02%           | decrease 2.28%           |
+| averange SSIM          | 0.7533       | 0.7533    | 0.7530    | 0.7122    | decrease 0.04%           | decrease 5.56%           |
+| averange infer time(s) | 1.8458       | 1.0242    | 0.5282    | 0.3598    | reduce 71.38%            | reduce 80.51%            |
+| GPU memory (MiB)       | 10849        | 4983~5047 | 3443~3507 | 3411~3487 | reduce about 67.74%      | reduce about 67.96%      |
 
 
 + **index 1 ~ 100 image's averange infer time **
