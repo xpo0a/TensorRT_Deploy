@@ -96,7 +96,7 @@ class RealESRGANerTest():
             return TypeError(f'{device} is not supported by torch')
 
     # save CPU memory
-    def trtInfer_111(self, img):
+    def trtInfer(self, img):
         print(img.shape)
         assert self._input_names is not None
         assert self._output_names is not None
