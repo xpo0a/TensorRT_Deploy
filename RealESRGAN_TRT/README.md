@@ -30,6 +30,8 @@ The origin pytorch url is [RealESRGAN](https://github.com/xinntao/Real-ESRGAN)
 ```sh plan.sh```
 4. change the image path and run
 ```python inference_realesrgan.py``` to get SR images.
+5. build trt-int8 engine
+```cd int8_v2``` change the related path then run ``` python int8_Engine_v2.py ```
 ---
 ### python script
 1. ```python inference_realesrgan.py``` to get SR images in folder Results
@@ -60,12 +62,16 @@ you can find Test system infor in [here](https://github.com/xpo0a/TensorRT_Deplo
 
 
 + **index 1 ~ 100 image's averange infer time**
++ 
+![image](https://github.com/xpo0a/TensorRT_Deploy/blob/main/RealESRGAN_TRT/script/inferTime_all.png)
 
-![image](https://github.com/xpo0a/TensorRT_Deploy/blob/main/RealESRGAN_TRT/script/inferTime.png)
+![image](https://github.com/xpo0a/TensorRT_Deploy/blob/main/RealESRGAN_TRT/script/inferTime_one.png)
 + **index 1 ~ 100 image's averange PSNR and SSIM**
 
 ![image](https://github.com/xpo0a/TensorRT_Deploy/blob/main/RealESRGAN_TRT/script/psnr.png)
 ![image](https://github.com/xpo0a/TensorRT_Deploy/blob/main/RealESRGAN_TRT/script/ssim.png)
+
+
 ### Set5
 + 5 images for HR and lr_x4
 + Comparison of calculation exection time and SPNR/SSIM of 100 iterations
