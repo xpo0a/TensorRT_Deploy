@@ -4,9 +4,11 @@ import matplotlib.pyplot as plt
 x1, y1 = [], []  # FP32
 x2, y2 = [], []  # FP16
 x3, y3 = [], []  # Pytorch
+x4, y4 = [], [] # int8
 str1 = '/home/ubuntu/Music/Real-ESRGAN_py/TXT_File/FP32/ssim.txt'
 str2 = '/home/ubuntu/Music/Real-ESRGAN_py/TXT_File/FP16/ssim.txt'
 str3 = '/home/ubuntu/Music/Real-ESRGAN_py/TXT_File/pytorch/ssim.txt'
+str4 = '/home/ubuntu/Music/Real-ESRGAN_py/TXT_File/int8/ssim.txt'
 
 with open(str1, 'r+') as f1:
     content1 = f1.read()
@@ -33,10 +35,19 @@ print(len(a3))
 for i in range(len(a3) - 1):
     y3.append(float(a3[i]))
 
+with open(str4, 'r+') as f4:
+    content4 = f4.read()
+
+a4 = content4.split('\n')
+print(len(a4))
+for i in range(len(a4) - 1):
+    y4.append(float(a4[i]))
+
 fig = plt.figure()
-plt.scatter(x1, y1, label='FP32', color='r', marker='^', linestyle='dashed')
-plt.scatter(x1, y2, label='FP16', color='b', marker='v', linestyle='dashed')
-plt.scatter(x1, y3, label='pytorch', color='g', marker='*', linestyle='dashed')
+plt.scatter(x1, y1, label='TRT-FP32', color='r', marker='^', linestyle='dashed')
+plt.scatter(x1, y2, label='TRT-FP16', color='b', marker='v', linestyle='dashed')
+plt.scatter(x1, y3, label='torch-FP32', color='g', marker='*', linestyle='dashed')
+plt.scatter(x1, y4, label='TRT-INT8', color='y', marker='+', linestyle='dashed')
 
 plt.legend()
 
