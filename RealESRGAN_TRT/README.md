@@ -60,12 +60,16 @@ you can find Test system infor in [here](https://github.com/xpo0a/TensorRT_Deplo
 
 
 + **index 1 ~ 100 image's averange infer time**
++ 
+![image](https://github.com/xpo0a/TensorRT_Deploy/blob/main/RealESRGAN_TRT/script/inferTime_all.png)
 
-![image](https://github.com/xpo0a/TensorRT_Deploy/blob/main/RealESRGAN_TRT/script/inferTime.png)
+![image](https://github.com/xpo0a/TensorRT_Deploy/blob/main/RealESRGAN_TRT/script/inferTime_one.png)
 + **index 1 ~ 100 image's averange PSNR and SSIM**
 
 ![image](https://github.com/xpo0a/TensorRT_Deploy/blob/main/RealESRGAN_TRT/script/psnr.png)
 ![image](https://github.com/xpo0a/TensorRT_Deploy/blob/main/RealESRGAN_TRT/script/ssim.png)
+
+
 ### Set5
 + 5 images for HR and lr_x4
 + Comparison of calculation exection time and SPNR/SSIM of 100 iterations
