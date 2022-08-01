@@ -79,7 +79,7 @@ class MyCalibrator(trt.IInt8EntropyCalibrator2):
     def loadImageList(self, imageList):
         res = np.empty(self.shape, dtype=np.float32)
         for i in range(self.shape[0]):
-            res[i, 0] = cv2.imread(imageList[i], cv2.IMREAD_GRAYSCALE).astype(np.float32)
+            res[i, 0] = cv2.imread(imageList[i], cv2.IMREAD_UNCHANGED).astype(np.float32)
         return res
 
     def get_batch_size(self):  # do NOT change name
