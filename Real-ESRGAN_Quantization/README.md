@@ -47,17 +47,23 @@
 | averange infer time(s) | 0.5282   | 0.2917           | 0.2305   |
 | GPU memory (MiB)       | 3.5G     | 3.4G             | 3.4G     |
 | visiual                | Best     | Good             | Bad      |
+
 + INT8 training detials
 ![image](https://github.com/xpo0a/TensorRT_Deploy/blob/main/Real-ESRGAN_Quantization/picture/Best_PTQ.png)
+
 ![image](https://github.com/xpo0a/TensorRT_Deploy/blob/main/Real-ESRGAN_Quantization/picture/MayBeBest_QAT.png)
 > Quantization is the balance between Precision and infer time.
+
 + the result of HR、FP16、INT8
 ![image](https://github.com/xpo0a/TensorRT_Deploy/blob/main/Real-ESRGAN_Quantization/picture/CONTR.png)
+
 > more picture in ```picture```
 + QAT result of ESRNet
 ![image](https://github.com/xpo0a/TensorRT_Deploy/blob/main/Real-ESRGAN_Quantization/picture/No_GAN.gif)
+
 + QAT result of ESRGAN
 ![image](https://github.com/xpo0a/TensorRT_Deploy/blob/main/Real-ESRGAN_Quantization/picture/GAN.gif)
+
 ### Download
 + **ONNX model and part of Results can be download** [aliyundriver](https://www.aliyundrive.com/s/gQftmqAJbwz)
 + /model/ONNX/PTQ/model_int8_PTQ图调度.onnx -> Using PPQ graph scheduling, 36 layers with the largest errors are calculated using the FP32 platform, and the rest are calculated using INT8.
