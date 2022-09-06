@@ -49,6 +49,7 @@
 | visiual                | Best     | Good             | Bad      |
 
 + INT8 training detials
+
 ![image](https://github.com/xpo0a/TensorRT_Deploy/blob/main/Real-ESRGAN_Quantization/picture/Best_PTQ.png)
 
 ![image](https://github.com/xpo0a/TensorRT_Deploy/blob/main/Real-ESRGAN_Quantization/picture/MayBeBest_QAT.png)
@@ -72,5 +73,5 @@
 + /model/Pytorch_Trained/RealESRGAN_x4plus_origin.pth -> origin model
 + /model/Pytorch_Trained/RealESRGAN_x4plus_MyTrain.pth -> model trained by me，包含ema_model
 + /model/Pytorch_Trained/Torch_QAT.pth -> Pytorch Eager QAT
-+ visiual results can be found in ```visiual_results```
++ visiual results can be found in ```visiual_results```.
 
