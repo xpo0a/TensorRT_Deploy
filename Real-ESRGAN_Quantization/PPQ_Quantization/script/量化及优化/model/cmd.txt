@@ -1,0 +1,22 @@
+/home/ubuntu/Music/Real-ESRGAN_py/trtexec --explicitBatch --onnx=/home/ubuntu/Music/Real-ESRGAN_PPQ/script/量化及优化/model/model_int8_Batch_7.onnx --minShapes --saveEngine=/home/ubuntu/Music/Real-ESRGAN_PPQ/script/量化及优化/model/debug.trt --verbose
+
+/home/ubuntu/Music/Real-ESRGAN_py/trtexec --explicitBatch --onnx=/home/ubuntu/Music/Real-ESRGAN_PPQ/script/量化及优化/model/model_int8_Batch_7.onnx --int8 --saveEngine=debug.trt --verbose > verbose.txt
+
+/home/ubuntu/Music/Real-ESRGAN_py/trtexec \
+    --loadEngine=/home/ubuntu/Music/Real-ESRGAN_PPQ/script/量化及优化/model/debug.trt \
+    --shapes=in:1x3x256x256 \
+    --dumpProfile\
+    --exportProfile=profile_file.txt \
+    > log_file.txt
+
+/home/ubuntu/Music/Real-ESRGAN_py/trtexec \
+    --loadEngine=model-FP16.trt \
+    --shapes=in:8x3x450x450 \
+    --warmUp=1000 \
+    --duration=10 \
+    --iterations=10 \
+    --useCudaGraph \
+    --verbose \
+    --dumpProfile\
+    --exportProfile=layerProfile.txt \
+    > result-FP16_noData.txt

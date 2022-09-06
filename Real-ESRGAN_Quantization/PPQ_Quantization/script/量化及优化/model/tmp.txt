@@ -1,0 +1,11 @@
+version:1， no dispatcher
+platform: TRT_INT8
+model_int8_Sim_1.onnx
+model_int8_Sim_1.onnx
+
+version: 2
+platform: TRT_INT8
+QSetting.dispatching_table.append x 16
+
+version: 3
+QSetting.dispatching_table.append x 32
