@@ -11,6 +11,6 @@ TRT's likely the fastest way to run a Deep learning model on NVIDIA GPUs.  ^ . ^
 + torch 1.8.1+cu111
 ---
 ## Updates
-+ 2022/09/02 RealESRGAN_Quantization -> comming soon...
++ 2022/09/05 RealESRGAN_Quantization
 + 2022/07/10 RealESRGAN_TRT -> TRT infer, support Int8 quantization PTQ by TRT.
 + 2022/06/28 RealESRGAN_TRT -> TRT infer, support dynamic shape.
