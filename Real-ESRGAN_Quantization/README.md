@@ -10,7 +10,8 @@
 1. Change the path of your ONNX model in ```/PPQ_Quantization/script/量化及优化/quantize_onnx_model.py``` and run ```python quantize_onnx_model.py``` to generate quantized ONNX model.
 2.  use ```/Real-ESRGAN_Quantization/TRT_Quantization/int8_v3/int8_Engine_v2.py``` to generate INT8 TRT engine.
 3. Run ```python inference_realesrgan.py```  to get SR images.
-Quantization error.
++ Quantization error.
+
 ![image](https://github.com/xpo0a/TensorRT_Deploy/blob/main/Real-ESRGAN_Quantization/picture/pit253.png)
 > everything can be found in **PPQ_Quantization**
 ### 3. Quantization Aware Training
